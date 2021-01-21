@@ -7,7 +7,7 @@ const authRoutes = require('./routes/auth-routes');
 const orderRoutes = require('./routes/order-routes');
 const shopRoutes = require('./routes/shop-routes');
 
-mongoose.connect('mongodb+srv://goyalaadesh461:11710461Aa@test.d3lnu.mongodb.net/mega_project?retryWrites=true&w=majority',{
+mongoose.connect('',{
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
