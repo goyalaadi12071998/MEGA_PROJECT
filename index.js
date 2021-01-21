@@ -7,7 +7,7 @@ const authRoutes = require('./routes/auth-routes');
 const orderRoutes = require('./routes/order-routes');
 const shopRoutes = require('./routes/shop-routes');
 
-mongoose.connect(process.env.DB_URL,{
+mongoose.connect(process.env.DB_UR,{
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
