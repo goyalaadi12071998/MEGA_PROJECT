@@ -25,6 +25,10 @@ app.use(authRoutes);
 app.use(orderRoutes);
 app.use(shopRoutes);
 
+app.all('*', function(req,res){
+    res.status(404).send('Page not found');
+});
+
 const port = process.env.PORT || 3000;
 
 app.listen(port,function() {
