@@ -3,6 +3,7 @@ const router = express.Router();
 const Shop = require('../models/shop');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const requireAuth = require('../middlewares/require-auth');
 
 router.post('/api/shop/signup',async function (req, res){
     const {name, email, password} = req.body;
@@ -35,9 +36,8 @@ router.post('/api/shop/login', async function (req, res){
         if(!isMatch){
             return res.status(400).send({message: 'Credentials mismatch'});
         }
-        const token = jwt.sign({id: shop._id , email: shop.email },process.env.JWT_SECRET);
-        req.session = token;
-        shop.password = null;
+        const token = await jwt.sign({id: shop._id , email: shop.email },process.env.JWT_SECRET);
+        req.session = {token: token, shopActive: true};
         return res.status(200).send({shop,token});        
 
     }catch(err){
