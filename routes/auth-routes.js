@@ -8,6 +8,9 @@ const requireAuth = require('../middlewares/require-auth');
 router.post('/api/shop/signup',async function (req, res){
     const {name, email, password} = req.body;
     try {    
+        if(!name || !email || !password) {
+            return res.status(409).send({message: 'Please provide all the required information'});
+        }
         const existingShop = await Shop.findOne({email});
         if(existingShop) {
             return res.status(409).send({message: 'Shop already exists'});
