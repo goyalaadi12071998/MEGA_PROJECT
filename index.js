@@ -1,11 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const app = express();
 
 const authRoutes = require('./routes/auth-routes');
 const orderRoutes = require('./routes/order-routes');
 const shopRoutes = require('./routes/shop-routes');
+
+dotenv.config();
 
 mongoose.connect(process.env.DB_UR,{
     useCreateIndex: true,
@@ -25,7 +28,7 @@ app.use(authRoutes);
 app.use(orderRoutes);
 app.use(shopRoutes);
 
-app.all('*', function(req,res){
+app.get('*', function(req,res){
     res.status(404).send('Page not found');
 });
 

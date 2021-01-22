@@ -7,7 +7,8 @@ const shopSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        index: true
     },
     password: {
         type: String,
