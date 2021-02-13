@@ -4,7 +4,7 @@ const Shop = require('../models/shop');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-router.get('/api/shop/signup', async (req, res) => {
+router.get('/api/shop/login', async (req, res) => {
     res.render('index.ejs');
 });
 
