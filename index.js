@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const app = express();
 const cookieSession = require('cookie-session');
+const ejs = require('ejs');
 
 const authRoutes = require('./routes/auth-routes');
 const orderRoutes = require('./routes/order-routes');
@@ -21,6 +22,8 @@ mongoose.connect(process.env.DB_UR,{
     console.log('Error', err);
     process.exit(1);
 });
+
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

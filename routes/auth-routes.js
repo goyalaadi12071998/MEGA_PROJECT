@@ -3,7 +3,10 @@ const router = express.Router();
 const Shop = require('../models/shop');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const requireAuth = require('../middlewares/require-auth');
+
+router.get('/api/shop/signup', async (req, res) => {
+    res.render('index.ejs');
+});
 
 router.post('/api/shop/signup',async function (req, res){
     const {name, email, password} = req.body;
@@ -29,6 +32,7 @@ router.post('/api/shop/signup',async function (req, res){
 });
 
 router.post('/api/shop/login', async function (req, res){
+    console.log(req.body);
     const {email, password} = req.body;
     try {
         let shop = await Shop.findOne({email: email});
@@ -50,6 +54,7 @@ router.post('/api/shop/login', async function (req, res){
 
 router.post('/api/shop/logout', (req, res) => {
     req.session = null;
+    req.shopActive = false;
     res.status(200).send({message: 'Logout successfully'});
 });
 

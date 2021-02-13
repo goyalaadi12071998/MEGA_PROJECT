@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const requireAuth = require('../middlewares/require-auth');
 const Menu = require('../models/menu');
-const Shop = require('../models/shop');
 
 router.post('/api/shop/addproduct',requireAuth, async (req, res) => {
     const {item, price, quantity} = req.body;
