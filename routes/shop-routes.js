@@ -3,6 +3,10 @@ const router = express.Router();
 const requireAuth = require('../middlewares/require-auth');
 const Menu = require('../models/menu');
 
+router.get('/api/shop/addproduct', async function (req, res){
+    res.render('addproduct.ejs');
+})
+
 router.post('/api/shop/addproduct',requireAuth, async (req, res) => {
     const {item, price, quantity} = req.body;
     const newMenu = new Menu({
