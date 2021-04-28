@@ -4,6 +4,10 @@ const Shop = require('../models/shop');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+router.get('/', async (req,res) => {
+    res.redirect('/api/shop/login');
+})
+
 router.get('/api/shop/login', async (req, res) => {
     res.render('index.ejs');
 });
@@ -45,7 +49,8 @@ router.post('/api/shop/login', async function (req, res){
         }
         const token = await jwt.sign({id: shop._id , email: shop.email },process.env.JWT_SECRET);
         req.session = {token: token, shopActive: true};
-        return res.status(200).send({shop,token});        
+        res.redirect('/api/shop');
+        //return res.status(200).send({shop,token});        
 
     }catch(err){
         return res.status(500).send({message: 'Internal Server Error ',err});
@@ -55,7 +60,8 @@ router.post('/api/shop/login', async function (req, res){
 router.post('/api/shop/logout', (req, res) => {
     req.session = null;
     req.shopActive = false;
-    res.status(200).send({message: 'Logout successfully'});
+    res.redirect('/api/shop/login');
+    //res.status(200).send({message: 'Logout successfully'});
 });
 
 module.exports = router;
