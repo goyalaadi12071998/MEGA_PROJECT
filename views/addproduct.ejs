@@ -8,10 +8,28 @@
     <title>Document</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Your shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="http://localhost:3000/api/shop">Show Items <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="http://localhost:3000/api/shop">Show Orders <span class="sr-only">(current)</span></a>
+              </li>
+            <li class="nav-item active">
+                <form action="/api/shop/logout" method="POST" class="validated-form" novalidate>
+                    <button class="btn" type="submit">Log Out</button>
+                </form>
+            </li>
+          </ul>
+        </div>
+      </nav>
     <div class="container d-flex justify-content-center align-items-center mt-5">
-        <form action="/api/shop/logout" method="post">
-            <button class="btn btn-success btn-block">Logout</button>
-        </form>
         <div class="row">
             <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
                 <div class="card shadow">

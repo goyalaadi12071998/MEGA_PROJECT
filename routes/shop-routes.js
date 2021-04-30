@@ -17,7 +17,6 @@ router.post('/api/shop/addproduct',requireAuth, async (req, res) => {
     });
     await newMenu.save();
     res.redirect('/api/shop/addproduct');
-    //return res.status(200).send({message: 'Item added successfully'});
 });
 
 router.get('/api/shop', requireAuth ,async (req, res) => {
