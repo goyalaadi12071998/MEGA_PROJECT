@@ -3,6 +3,7 @@ const router = express.Router();
 const requireAuth = require('../middlewares/require-auth');
 const Menu = require('../models/menu');
 const Shop = require('../models/shop');
+const { ObjectId } = require('mongoose');
 
 router.get('/api/shop/addproduct',requireAuth, async function (req, res){
     res.render('addproduct.ejs');
@@ -28,9 +29,10 @@ router.get('/api/shop', requireAuth ,async (req, res) => {
 
 router.get('/api/shop/:id', async function(req, res){
     const menu = await Menu.find({shop: req.params.id, quantity: {$gt: 0}});
-    const shop = await Shop.findById(menu[0].shop);
-    console.log(menu[0]);
-    return res.render("tabledata.ejs",{menu: menu, shop: shop});
+    // console.log(menu[0]);
+    // const shop = await Shop.findById(ObjectId(menu[0].shop));
+    
+    return res.render("tabledata.ejs",{menu: menu});
 });
 
 module.exports = router;

@@ -29,7 +29,7 @@
         <td><%=menu.item%></td>
         <td><%=menu.price%></td>
         <td>
-          <form method="post" action="/api/shop/order">
+          <form method="post" action="/api/shop/order/<%=menu._id%>">
             <button type="submit" class="btn btn-danger">Delete From Menu</button>
           </form>
         </td> 

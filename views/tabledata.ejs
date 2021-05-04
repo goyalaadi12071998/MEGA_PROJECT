@@ -13,7 +13,6 @@
   <body>
     
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#"><%=shop.name%></a>
         </div>
     </nav> 
   <table class="table" style="text-align:center">
@@ -26,10 +25,14 @@
   <tbody>
     <%menu.forEach(function(menu){%>
       <tr>
-        <td><%=menu.item%></td>
+        <td><%=menu.item%></td>a
         <td><%=menu.price%></td>
         <td>
           <form method="post" action="/api/shop/order">
+            <input type="text" name="item" value="<%=menu.item%>" hidden="true">
+            <input type="text" name="price" value="<%=menu.price%>" hidden="true">
+            <input type="text" name="shop_id" value="<%=menu.shop%>" hidden="true">
+            <input type="number" name="quantity">
             <button type="submit" class="btn btn-primary">Order Item</button>
           </form>
         </td> 
