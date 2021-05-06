@@ -8,27 +8,22 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Your shop</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="/api/shop">Show Items <span class="sr-only">(current)</span></a>
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#" style="margin-left: 20px"><%=shop.name%></a>
+            <li class="nav-item active" style="list-style: none;">
+            <a class="nav-link" href="/api/shop">Show Items <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/api/shop">Show Orders <span class="sr-only">(current)</span></a>
-              </li>
-            <li class="nav-item active">
+            <li class="nav-item active" style="list-style: none;">
+                <a class="nav-link" href="/api/shop/order">Show Orders <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active" style="list-style: none;">
                 <form action="/api/shop/logout" method="POST" class="validated-form" novalidate>
-                    <button class="btn" type="submit">Log Out</button>
+                    <button class="btn btn-primary" type="submit" style="margin-top: 10px;">Log Out</button>
                 </form>
             </li>
-          </ul>
-        </div>
-      </nav>
+        </nav> 
+    
     <div class="container d-flex justify-content-center align-items-center mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">

@@ -18,9 +18,6 @@
         <a class="nav-link" href="/api/shop/addproduct">Add Product <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active" style="list-style: none;">
-          <a class="nav-link" href="/api/shop/order">Show Orders <span class="sr-only">(current)</span></a>
-        </li>
-      <li class="nav-item active" style="list-style: none;">
           <form action="/api/shop/logout" method="POST" class="validated-form" novalidate>
               <button class="btn" type="submit">Log Out</button>
           </form>
@@ -35,14 +32,14 @@
     </tr>
   </thead>
   <tbody>
-    <%menu.forEach(function(menu){%>
+    <%orders.forEach(function(menu){%>
       <tr>
         <td><%=menu.item%></td>
         <td><%=menu.price%></td>
         <td><%=menu.quantity%></td>
         <td>
           <form method="post" action="/api/shop/product/<%=menu._id%>">
-            <button type="submit" class="btn btn-danger">Delete From Menu</button>
+            <button type="submit" class="btn btn-danger">Completed</button>
           </form>
         </td> 
       </tr>

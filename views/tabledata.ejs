@@ -14,31 +14,37 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#"><%=shop.name%></a>
     </nav>
-  <table class="table" style="text-align:center">
-  <thead>
-    <tr>
-      <th scope="col">Item</th>
-      <th scope="col">Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%menu.forEach(function(menu){%>
-      <tr>
-        <td><%=menu.item%></td>
-        <td><%=menu.price%></td>
-        <td>
-          <form method="post" action="/api/shop/order">
-            <input type="text" name="item" value="<%=menu.item%>" hidden="true">
-            <input type="text" name="price" value="<%=menu.price%>" hidden="true">
-            <input type="text" name="shop_id" value="<%=menu.shop%>" hidden="true">
-            <input type="number" name="quantity" style="width: 40px;">
-            <button type="submit" class="btn btn-primary">Order Item</button>
-          </form>
-        </td> 
-      </tr>
-    <%})%>
-  </tbody>
-</table>
+    <div class="container-fluid">
+      <div class="row">
+        <table class="table" style="text-align:center">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%menu.forEach(function(menu){%>
+              <tr>
+                <td class="col-xs-3"><%=menu.item%></td>
+                <td class="col-xs-3"><%=menu.price%></td>
+                <td class= "col-xs-3">
+                  <form method="post" action="/api/shop/order">
+                    <input type="text" name="menuid" value="<%=menu._id%>" hidden="true">
+                    <input type="text" name="item" value="<%=menu.item%>" hidden="true">
+                    <input type="text" name="price" value="<%=menu.price%>" hidden="true">
+                    <input type="text" name="shop_id" value="<%=menu.shop%>" hidden="true">
+                    <input type="number" name="quantity" style="width: 40px;">
+                    <button type="submit" class="btn btn-primary">Order Item</button>
+                  </form>
+                </td> 
+              </tr>
+            <%})%>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
 
     <!-- Optional JavaScript -->

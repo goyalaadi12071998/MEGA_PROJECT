@@ -6,7 +6,8 @@ const Shop = require('../models/shop');
 const { ObjectId } = require('mongoose');
 
 router.get('/api/shop/addproduct',requireAuth, async function (req, res){
-    res.render('addproduct.ejs');
+    const shop = await Shop.findById(req.currentShop._id);
+    res.render('addproduct.ejs',{shop: shop});
 })
 
 router.post('/api/shop/addproduct',requireAuth, async (req, res) => {
