@@ -27,12 +27,17 @@ router.get('/api/shop', requireAuth ,async (req, res) => {
     return res.render("tabledata2.ejs",{menu: menu, shop: shop});
 })
 
+
+router.post('/api/shop/product/:id',requireAuth, async (req, res) => {
+    await Menu.findByIdAndRemove(req.params.id);
+    res.redirect('/api/shop');    
+});
+
 router.get('/api/shop/:id', async function(req, res){
-    const menu = await Menu.find({shop: req.params.id, quantity: {$gt: 0}});
-    // console.log(menu[0]);
-    // const shop = await Shop.findById(ObjectId(menu[0].shop));
+    const shop = await Shop.findById({_id: req.params.id});
+    const menu = await Menu.find({shop: shop._id, quantity: {$gt: 0}});
     
-    return res.render("tabledata.ejs",{menu: menu});
+    return res.render("tabledata.ejs",{menu: menu, shop: shop});
 });
 
 module.exports = router;
