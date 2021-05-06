@@ -18,7 +18,7 @@ router.post('/api/shop/order', async function (req, res){
     await menu.save();
     await newOrder.save();
     delete newOrder._id;
-    return res.send({newOrder: newOrder});
+    return res.render("order.ejs",{newOrder: newOrder});
 });
 
 router.get('/api/shop/order',requireAuth, async (req, res)=>{
