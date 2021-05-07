@@ -28,4 +28,10 @@ router.get('/api/shop/order',requireAuth, async (req, res)=>{
     res.render("tabledata3.ejs",{orders: orders, shop: shop});
 })
 
+router.post('/api/order/:id',requireAuth, async (req, res) => {
+    await Order.findByIdAndRemove(req.params.id);
+    res.redirect('/api/shop/order');    
+});
+
+
 module.exports = router;

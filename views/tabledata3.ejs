@@ -26,6 +26,7 @@
   <table class="table" style="text-align:center">
   <thead>
     <tr>
+      <th scope="col">Order ID</th>
       <th scope="col">Item</th>
       <th scope="col">Price</th>
       <th scope="col">Quantity</th>
@@ -34,11 +35,12 @@
   <tbody>
     <%orders.forEach(function(menu){%>
       <tr>
+        <td><%=menu._id %></td>
         <td><%=menu.item%></td>
         <td><%=menu.price%></td>
         <td><%=menu.quantity%></td>
         <td>
-          <form method="post" action="/api/shop/product/<%=menu._id%>">
+          <form method="post" action="/api/order/<%=menu._id%>">
             <button type="submit" class="btn btn-danger">Completed</button>
           </form>
         </td> 
